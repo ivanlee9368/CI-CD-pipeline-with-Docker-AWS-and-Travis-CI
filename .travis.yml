@@ -1,0 +1,10 @@
+sudo: required
+language: generic 
+services:
+  - docker
+
+before_install:
+  - docker build -t ivanlee/docker-k8s -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ivanlee/docker-k8s npm run test
